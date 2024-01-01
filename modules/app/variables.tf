@@ -13,17 +13,27 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
-variable "portal_version" {
+variable "app_service_plan_id" {
   type        = string
-  description = "The version of the Portal app to deploy."
+  description = "The ID of the App Service Plan."
 }
 
-variable "portal_hostname" {
+variable "app_name" {
   type        = string
-  description = "The hostname of the Portal app to deploy."
+  description = "The name of the App to deploy."
 }
 
-variable "portal_enabled" {
+variable "app_version" {
+  type        = string
+  description = "The version of the App to deploy."
+}
+
+variable "app_hostname" {
+  type        = string
+  description = "The hostname of the App to deploy."
+}
+
+variable "app_enabled" {
   type        = bool
-  description = "Whether or not the Portal app should be enabled."
+  description = "Whether or not the App should be enabled."
 }
