@@ -39,14 +39,6 @@ resource "azurerm_app_service_custom_hostname_binding" "hostname" {
   }
 }
 
-output "custom_domain_verification_id" {
-  value = azurerm_app_service_custom_hostname_binding.hostname.custom_domain_verification_id
-}
-
-output "default_site_hostname" {
-  value = azurerm_linux_web_app.app.default_site_hostname
-}
-
 # TLS certificate
 
 resource "azurerm_app_service_managed_certificate" "certificate" {
