@@ -18,6 +18,17 @@ variable "app_service_plan_id" {
   description = "The ID of the App Service Plan."
 }
 
+variable "acr_username" {
+  type        = string
+  description = "The username for the Docker Registry."
+}
+
+variable "acr_password" {
+  type        = string
+  description = "The password for the Docker Registry."
+  sensitive   = true
+}
+
 variable "app_name" {
   type        = string
   description = "The name of the App to deploy."

@@ -17,8 +17,10 @@ resource "azurerm_linux_web_app" "app" {
 
   site_config {
     application_stack {
-      docker_image_name   = "portal:0.1.1"
-      docker_registry_url = "https://${var.environment}${var.region_short}novasoftworks.azurecr.io"
+      docker_image_name        = "portal:0.1.1"
+      docker_registry_url      = "https://${var.environment}${var.region_short}novasoftworks.azurecr.io"
+      docker_registry_username = var.acr_username
+      docker_registry_password = var.acr_password
     }
 
     minimum_tls_version = "1.2"
@@ -35,6 +37,14 @@ resource "azurerm_app_service_custom_hostname_binding" "hostname" {
   lifecycle {
     ignore_changes = [ssl_state, thumbprint] # managed by azurerm_app_service_certificate_binding
   }
+}
+
+output "custom_domain_verification_id" {
+  value = azurerm_app_service_custom_hostname_binding.hostname.custom_domain_verification_id
+}
+
+output "default_site_hostname" {
+  value = azurerm_linux_web_app.app.default_site_hostname
 }
 
 # TLS certificate

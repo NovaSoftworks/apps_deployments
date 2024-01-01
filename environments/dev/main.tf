@@ -37,6 +37,8 @@ module "portal" {
   region_short = var.region_short
 
   app_service_plan_id = data.terraform_remote_state.global.outputs.app_service_plan.id
+  acr_username        = var.acr_username
+  acr_password        = var.acr_password
   app_name            = "portal"
   app_version         = var.portal_version
   app_hostname        = var.portal_hostname

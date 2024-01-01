@@ -13,6 +13,17 @@ variable "region_short" {
   description = "This is the cloud hosting region where the infrastructure will be deployed, but shortened."
 }
 
+variable "acr_username" {
+  type        = string
+  description = "The username for the Docker Registry."
+}
+
+variable "acr_password" {
+  type        = string
+  description = "The password for the Docker Registry."
+  sensitive   = true
+}
+
 variable "portal_version" {
   type        = string
   description = "The version of the Portal app to deploy."
