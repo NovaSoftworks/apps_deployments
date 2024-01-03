@@ -29,9 +29,9 @@ variable "portal_version" {
   description = "The version of the Portal app to deploy."
 }
 
-variable "portal_hostname" {
+variable "portal_subdomain" {
   type        = string
-  description = "The hostname of the Portal app to deploy."
+  description = "The subdomain of the Portal app to deploy in the given DNS zone."
 }
 
 variable "portal_enabled" {

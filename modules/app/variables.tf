@@ -18,6 +18,16 @@ variable "app_service_plan_id" {
   description = "The ID of the App Service Plan."
 }
 
+variable "dns_zone_name" {
+  type        = string
+  description = "The name of the DNS Zone to use for the App."
+}
+
+variable "dns_zone_rg_name" {
+  type        = string
+  description = "The name of the Resource Group where the DNS Zone is located."
+}
+
 variable "acr_username" {
   type        = string
   description = "The username for the Docker Registry."
@@ -39,9 +49,9 @@ variable "app_version" {
   description = "The version of the App to deploy."
 }
 
-variable "app_hostname" {
+variable "app_subdomain" {
   type        = string
-  description = "The hostname of the App to deploy."
+  description = "The subdomain of the App to deploy in the given DNS zone."
 }
 
 variable "app_enabled" {

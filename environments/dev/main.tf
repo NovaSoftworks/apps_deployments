@@ -37,10 +37,12 @@ module "portal" {
   region_short = var.region_short
 
   app_service_plan_id = data.terraform_remote_state.global.outputs.app_service_plan.id
+  dns_zone_name       = data.terraform_remote_state.global.outputs.dns_zone_novasoftworks_com.name
+  dns_zone_rg_name    = data.terraform_remote_state.global.outputs.dns_zone_novasoftworks_com.resource_group_name
   acr_username        = var.acr_username
   acr_password        = var.acr_password
   app_name            = "portal"
   app_version         = var.portal_version
-  app_hostname        = var.portal_hostname
+  app_subdomain       = var.portal_subdomain
   app_enabled         = var.portal_enabled
 }
