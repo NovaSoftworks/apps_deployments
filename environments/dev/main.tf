@@ -29,6 +29,7 @@ provider "azurerm" {
   features {}
 }
 
+/** TODO: refactor with new infra
 module "portal" {
   source = "../../modules/app"
 
@@ -46,3 +47,4 @@ module "portal" {
   app_subdomain       = var.portal_subdomain
   app_enabled         = var.portal_enabled
 }
+**/
