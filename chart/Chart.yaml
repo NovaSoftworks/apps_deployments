@@ -3,4 +3,4 @@ name: webapp
 description: A Helm chart for web applications
 
 type: application
-version: 0.1.0
+version: 0.1.1
