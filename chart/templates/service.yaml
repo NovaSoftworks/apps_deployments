@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: { { .Values.appName } }
+  name: {{ .Values.appName }}
   namespace: webapps
   labels:
-    app: { { .Values.appName } }
+    app: {{ .Values.appName }}
 spec:
   selector:
-    app: { { .Values.appName } }
+    app: {{ .Values.appName }}
   ports:
     - name: http
       port: 80
-      targetPort: { { .Values.port } }
+      targetPort: {{ .Values.port }}
