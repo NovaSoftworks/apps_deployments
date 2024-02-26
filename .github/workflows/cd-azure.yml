@@ -37,10 +37,7 @@ jobs:
       shell: bash
       env:
         CONFIG_PATH: ${{ env.CONFIG_PATH }}
-    - name: Check Helm Release
-      id: helm_release
+    - name: Deploy with Helm
       run: |
-        release_name="${{ inputs.app }}-release"
-        helm get values $release_name &>/dev/null || echo "Release does not exist"
-        echo "::set-output name=release_exists::$(helm get values $release_name &>/dev/null && echo true || echo false)"
+        helm upgrade $APP-release chart/ --values $CONFIG_PATH --install --create-namespace
 
