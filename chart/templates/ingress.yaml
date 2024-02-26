@@ -5,6 +5,7 @@ metadata:
  namespace: webapps
  annotations:
    cert-manager.io/cluster-issuer: "le-http"
+   traefik.ingress.kubernetes.io/router.middlewares: redirect-http-to-https@kubernetescrd,redirect-www-to-non-www@kubernetescrd
 spec:
  tls:
    - hosts:
