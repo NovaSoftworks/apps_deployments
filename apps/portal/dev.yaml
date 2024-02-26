@@ -1,0 +1,4 @@
+appName: portal
+port: 8080
+image: uksdevnovasoftworks.azurecr.io/portal:0.1.1
+hosts: dev.novasoftworks.com
