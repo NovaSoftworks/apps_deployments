@@ -20,6 +20,8 @@ jobs:
     env:
       APP: ${{ inputs.app }}
       ENV: ${{ inputs.environment }}
+      RG_NAME: ${{ vars.RG_NAME }}
+      CLUSTER_NAME: ${{ vars.CLUSTER_NAME }}
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
@@ -37,6 +39,16 @@ jobs:
       shell: bash
       env:
         CONFIG_PATH: ${{ env.CONFIG_PATH }}
+        
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Set AKS Context
+      uses: azure/aks-set-context@v3
+      with:
+         resource-group: ${{ env.RG_NAME }}
+         cluster-name: ${{ env.CLUSTER_NAME }}
     - name: Deploy with Helm
       run: |
         helm upgrade $APP-release chart/ --values $CONFIG_PATH --install --create-namespace
