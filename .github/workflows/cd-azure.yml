@@ -51,5 +51,5 @@ jobs:
          cluster-name: ${{ env.CLUSTER_NAME }}
     - name: Deploy with Helm
       run: |
-        helm upgrade $APP-release chart/ --values $CONFIG_PATH --install --create-namespace
+        helm upgrade $APP-release chart/ -i -f $CONFIG_PATH -n webapps --create-namespace
 
