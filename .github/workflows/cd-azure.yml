@@ -25,7 +25,11 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup Config Path
       run: echo "CONFIG_PATH=apps/$APP/$ENV.yaml" >> $GITHUB_ENV
-    - name: Display Config Path
-      run: echo "$CONFIG_PATH"
+    - name: Check if Config File Exists
+      run: |
+        if [ ! -f "$CONFIG_PATH" ]; then
+          echo "Error: Configuration file $CONFIG_PATH does not exist. Make sure the app name given matches the directory of the application in apps/"
+          exit 1
+        fi
     - name: Build Summary
-      run: echo "### $APP published in $ENV! :rocket:" >> $GITHUB_STEP_SUMMARY
+      run: echo "### $APP deployed in $ENV (WIP)! :rocket:" >> $GITHUB_STEP_SUMMARY
