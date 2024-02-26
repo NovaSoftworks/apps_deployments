@@ -28,14 +28,14 @@ jobs:
     - name: Check if Config File Exists
       run: |
         if [ ! -f "$CONFIG_PATH" ]; then
+          echo "Error: Configuration file $CONFIG_PATH does not exist."
+          echo "::error::Configuration file $CONFIG_PATH does not exist. Please check the path and try again."
           exit 1
+        else
+          echo "Configuration file exists: $CONFIG_PATH"
         fi
-    - name: Fail Workflow If Config File Doesn't Exist
-      if: ${{ failure() }}
-      uses: actions/github-script@v3
-      with:
-        script: |
-          const configPath = process.env.CONFIG_PATH;
-          core.setFailed(`Configuration file '${configPath}' does not exist. Make sure the app name given matches the directory of the application in apps/ and try again.`)
+      shell: bash
+      env:
+        CONFIG_PATH: ${{ env.CONFIG_PATH }}
     - name: Build Summary
       run: echo "### $APP deployed in $ENV (WIP)! :rocket:" >> $GITHUB_STEP_SUMMARY
