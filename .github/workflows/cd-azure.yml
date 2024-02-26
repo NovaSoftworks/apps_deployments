@@ -36,6 +36,6 @@ jobs:
       with:
         script: |
           const configPath = process.env.CONFIG_PATH;
-          core.setFailed('Configuration file `${configPath}` does not exist. Make sure the app name given matches the directory of the application in apps/ and try again.')
+          core.setFailed(`Configuration file '${configPath}' does not exist. Make sure the app name given matches the directory of the application in apps/ and try again.`)
     - name: Build Summary
       run: echo "### $APP deployed in $ENV (WIP)! :rocket:" >> $GITHUB_STEP_SUMMARY
